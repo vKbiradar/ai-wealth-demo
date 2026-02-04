@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+from logic.forecast import forecast_candidates, best_pick
 from ui.theme import set_theme, section
 
 set_theme()
@@ -52,6 +54,60 @@ for col, (title, desc) in zip(highlights, highlight_data):
             <p class="muted">{desc}</p>
         </div>
         """, unsafe_allow_html=True)
+
+st.markdown("<br/>", unsafe_allow_html=True)
+
+section("Live Market Feeds", "Jump into real-time dashboards.")
+
+feed_cols = st.columns(3)
+feed_links = [
+    ("Stocks Live Data", "https://www.tradingview.com/markets/stocks-usa/"),
+    ("Commodities Live Data", "https://www.tradingview.com/markets/commodities/"),
+    ("Bitcoin Live Data", "https://www.tradingview.com/symbols/BTCUSD/")
+]
+
+for col, (label, link) in zip(feed_cols, feed_links):
+    with col:
+        st.markdown(f"""
+        <div class="card">
+            <a class="live-button" href="{link}" target="_blank" rel="noopener noreferrer">
+                {label}
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
+
+st.markdown("<br/>", unsafe_allow_html=True)
+
+section("Data Science Return Outlook", "Model-driven ideas for 1–2 year horizons.")
+
+outlook = st.columns([2, 1])
+with outlook[0]:
+    horizon = st.selectbox("Forecast Horizon", [1, 2], format_func=lambda x: f"{x} year")
+    candidates = forecast_candidates()
+    df = pd.DataFrame(candidates)
+    st.dataframe(
+        df,
+        width="stretch",
+        hide_index=True
+    )
+
+with outlook[1]:
+    best = best_pick(candidates, horizon)
+    st.markdown(
+        f"""
+        <div class="card">
+            <h4>Top Pick ({horizon}Y)</h4>
+            <p class="muted">{best['Ticker']} · {best['Theme']}</p>
+            <p><strong>Expected Return:</strong> {best['Expected Return (1Y)'] if horizon == 1 else best['Expected Return (2Y)']}%</p>
+            <p class="muted">Volatility: {best['Volatility']}</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+st.caption(
+    "Illustrative signals only. Not investment advice or a prediction."
+)
 
 st.markdown("<br/>", unsafe_allow_html=True)
 
