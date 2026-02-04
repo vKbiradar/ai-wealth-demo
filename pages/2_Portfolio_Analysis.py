@@ -30,7 +30,7 @@ fig = px.pie(
     names="Asset",
     values="Allocation",
     hole=0.5,
-    color_discrete_sequence=["#38BDF8", "#A78BFA", "#22D3EE"]
+    color_discrete_sequence=["#00F0FF", "#1D8CF8", "#7FFBFF"]
 )
 
 fig.update_layout(

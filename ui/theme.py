@@ -14,52 +14,56 @@ def set_theme():
         }
 
         body {
-            background: radial-gradient(circle at top, #0B1120, #06080F 60%);
-            color: #E2E8F0;
+            background-color: #030712;
+            background-image:
+                radial-gradient(circle at top, rgba(0, 229, 255, 0.15), transparent 55%),
+                repeating-linear-gradient(90deg, rgba(0, 229, 255, 0.08) 0, rgba(0, 229, 255, 0.08) 1px, transparent 1px, transparent 60px),
+                repeating-linear-gradient(0deg, rgba(0, 229, 255, 0.08) 0, rgba(0, 229, 255, 0.08) 1px, transparent 1px, transparent 60px);
+            color: #E2F5FF;
         }
 
         h1, h2, h3, h4 {
-            color: #E2E8F0;
+            color: #E6FBFF;
             font-weight: 600;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.03em;
+            text-shadow: 0 0 6px rgba(0, 229, 255, 0.25);
         }
 
         p, span, label {
-            color: #94A3B8;
+            color: #A7C8D9;
         }
 
         .stButton>button {
-            background: linear-gradient(90deg, #38BDF8, #818CF8);
-            color: #020617;
+            background: linear-gradient(90deg, #00F0FF, #1D8CF8);
+            color: #00101A;
             border-radius: 10px;
             padding: 0.6rem 1.4rem;
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+            border: 1px solid rgba(0, 229, 255, 0.6);
+            box-shadow: 0 0 22px rgba(0, 229, 255, 0.6);
         }
 
         .stButton>button:hover {
-            background: linear-gradient(90deg, #67E8F9, #A78BFA);
-            box-shadow: 0 0 24px rgba(129, 140, 248, 0.6);
+            background: linear-gradient(90deg, #7FFBFF, #38BDF8);
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.8);
         }
 
         .card {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(5, 10, 20, 0.96);
             border-radius: 14px;
             padding: 1.25rem;
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            box-shadow: 0 0 24px rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 229, 255, 0.35);
+            box-shadow: 0 0 32px rgba(0, 229, 255, 0.2);
         }
 
         .muted {
-            color: #94A3B8;
+            color: #8BB7CC;
             font-size: 0.9rem;
         }
 
         hr {
             border: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #38BDF8, transparent);
+            background: linear-gradient(90deg, transparent, #00F0FF, transparent);
             margin: 1rem 0 1.5rem 0;
         }
 
@@ -73,18 +77,28 @@ def set_theme():
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.08em;
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
         }
 
         .status-ok {
-            background: rgba(34, 197, 94, 0.2);
-            color: #4ADE80;
-            border: 1px solid rgba(74, 222, 128, 0.5);
+            background: rgba(0, 229, 255, 0.2);
+            color: #7FFBFF;
+            border: 1px solid rgba(0, 229, 255, 0.6);
         }
 
         .status-warn {
-            background: rgba(251, 191, 36, 0.2);
-            color: #FCD34D;
-            border: 1px solid rgba(251, 191, 36, 0.5);
+            background: rgba(56, 189, 248, 0.15);
+            color: #60A5FA;
+            border: 1px solid rgba(56, 189, 248, 0.5);
+        }
+
+        .stSlider [data-baseweb="track"] {
+            background: rgba(0, 229, 255, 0.25);
+        }
+
+        .stSlider [data-baseweb="thumb"] {
+            background-color: #00F0FF;
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.8);
         }
         </style>
     """, unsafe_allow_html=True)
