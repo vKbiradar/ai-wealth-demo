@@ -55,7 +55,7 @@ for col, (title, desc) in zip(highlights, highlight_data):
 
 st.markdown("<br/>", unsafe_allow_html=True)
 
-section("Advisory Toolkit", "What advisors and investors can add today.")
+section("Advisory Toolkit", "Modules to expand the platform.")
 
 toolkit = st.columns(4)
 toolkit_items = [
@@ -86,6 +86,47 @@ metric_data = [
 ]
 
 for col, (title, desc) in zip(metrics, metric_data):
+    with col:
+        st.markdown(f"""
+        <div class="card">
+            <h4>{title}</h4>
+            <p class="muted">{desc}</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+st.markdown("<br/>", unsafe_allow_html=True)
+
+section("Client & Advisor Experiences", "Tailored journeys for different users.")
+
+personas = st.columns(3)
+persona_data = [
+    ("Advisors", "Model portfolio oversight, client readiness reports, compliance logs."),
+    ("Individuals", "Goal-based dashboards with risk-aware action nudges."),
+    ("Institutions", "Committee-ready scorecards and policy guardrails.")
+]
+
+for col, (title, desc) in zip(personas, persona_data):
+    with col:
+        st.markdown(f"""
+        <div class="card">
+            <h4>{title}</h4>
+            <p class="muted">{desc}</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+st.markdown("<br/>", unsafe_allow_html=True)
+
+section("Integrations & Governance", "Keep data, reporting, and compliance connected.")
+
+integrations = st.columns(4)
+integration_data = [
+    ("Data Feeds", "Custodian and broker imports, CSV or API."),
+    ("CRM Sync", "Surface risk signals inside client workflows."),
+    ("Audit Trail", "Decision logs for investment committees."),
+    ("Report Packs", "Board-ready PDFs with consistent narratives.")
+]
+
+for col, (title, desc) in zip(integrations, integration_data):
     with col:
         st.markdown(f"""
         <div class="card">
