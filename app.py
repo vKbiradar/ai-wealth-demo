@@ -78,36 +78,22 @@ for col, (label, link) in zip(feed_cols, feed_links):
 
 st.markdown("<br/>", unsafe_allow_html=True)
 
-section("Data Science Return Outlook", "Model-driven ideas for 1–2 year horizons.")
+section("Forecast Lab", "Launch the data-science driven return outlook.")
 
-outlook = st.columns([2, 1])
-with outlook[0]:
-    horizon = st.selectbox("Forecast Horizon", [1, 2], format_func=lambda x: f"{x} year")
-    candidates = forecast_candidates()
-    df = pd.DataFrame(candidates)
-    st.dataframe(
-        df,
-        width="stretch",
-        hide_index=True
-    )
-
-with outlook[1]:
-    best = best_pick(candidates, horizon)
+forecast_cols = st.columns([2, 1])
+with forecast_cols[0]:
     st.markdown(
-        f"""
+        """
         <div class="card">
-            <h4>Top Pick ({horizon}Y)</h4>
-            <p class="muted">{best['Ticker']} · {best['Theme']}</p>
-            <p><strong>Expected Return:</strong> {best['Expected Return (1Y)'] if horizon == 1 else best['Expected Return (2Y)']}%</p>
-            <p class="muted">Volatility: {best['Volatility']}</p>
+            <h4>Data Science Return Outlook</h4>
+            <p class="muted">Explore live signals and horizon-based rankings for 1–2 years.</p>
         </div>
         """,
         unsafe_allow_html=True
     )
-
-st.caption(
-    "Illustrative signals only. Not investment advice or a prediction."
-)
+with forecast_cols[1]:
+    if st.button("Open Forecast Lab"):
+        st.switch_page("pages/5_Forecast.py")
 
 st.markdown("<br/>", unsafe_allow_html=True)
 
