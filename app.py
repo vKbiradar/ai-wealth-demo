@@ -55,6 +55,27 @@ for col, (title, desc) in zip(highlights, highlight_data):
 
 st.markdown("<br/>", unsafe_allow_html=True)
 
+section("Live Market Feeds", "Jump into real-time dashboards.")
+
+feed_cols = st.columns(3)
+feed_links = [
+    ("Stocks Live Data", "https://www.tradingview.com/markets/stocks-usa/"),
+    ("Commodities Live Data", "https://www.tradingview.com/markets/commodities/"),
+    ("Bitcoin Live Data", "https://www.tradingview.com/symbols/BTCUSD/")
+]
+
+for col, (label, link) in zip(feed_cols, feed_links):
+    with col:
+        st.markdown(f"""
+        <div class="card">
+            <a class="live-button" href="{link}" target="_blank" rel="noopener noreferrer">
+                {label}
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
+
+st.markdown("<br/>", unsafe_allow_html=True)
+
 section("Advisory Toolkit", "Modules to expand the platform.")
 
 toolkit = st.columns(4)
