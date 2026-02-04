@@ -3,7 +3,6 @@ import streamlit as st
 
 
 STOOQ_BASE_URL = "https://stooq.com/q/d/l/?s={ticker}.us&i=d"
-DEFAULT_TICKERS = ["AAPL", "MSFT", "NVDA", "AMZN", "GOOGL", "TSLA"]
 
 
 @st.cache_data(show_spinner=False)
@@ -65,16 +64,3 @@ def pick_best_candidate(table, horizon_years):
         "Expected Return (%)": best_row[key],
         "Latest Price": best_row["Latest Price"]
     }
-
-
-def forecast_candidates():
-    table = build_forecast_table(DEFAULT_TICKERS)
-    return table.to_dict(orient="records")
-
-
-def best_pick(candidates, horizon_years):
-    if isinstance(candidates, list):
-        table = pd.DataFrame(candidates)
-    else:
-        table = build_forecast_table(DEFAULT_TICKERS)
-    return pick_best_candidate(table, horizon_years)
