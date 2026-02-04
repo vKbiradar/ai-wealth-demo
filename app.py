@@ -55,6 +55,46 @@ for col, (title, desc) in zip(highlights, highlight_data):
 
 st.markdown("<br/>", unsafe_allow_html=True)
 
+section("Live Market Feeds", "Jump into real-time dashboards.")
+
+feed_cols = st.columns(3)
+feed_links = [
+    ("Stocks Live Data", "https://www.tradingview.com/markets/stocks-usa/"),
+    ("Commodities Live Data", "https://www.tradingview.com/markets/commodities/"),
+    ("Bitcoin Live Data", "https://www.tradingview.com/symbols/BTCUSD/")
+]
+
+for col, (label, link) in zip(feed_cols, feed_links):
+    with col:
+        st.markdown(f"""
+        <div class="card">
+            <a class="live-button" href="{link}" target="_blank" rel="noopener noreferrer">
+                {label}
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
+
+st.markdown("<br/>", unsafe_allow_html=True)
+
+section("Forecast Lab", "Launch the data-science driven return outlook.")
+
+forecast_cols = st.columns([2, 1])
+with forecast_cols[0]:
+    st.markdown(
+        """
+        <div class="card">
+            <h4>Data Science Return Outlook</h4>
+            <p class="muted">Explore live signals and horizon-based rankings for 1–2 years.</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+with forecast_cols[1]:
+    if st.button("Open Forecast Lab"):
+        st.switch_page("pages/5_Forecast.py")
+
+st.markdown("<br/>", unsafe_allow_html=True)
+
 section("Advisory Toolkit", "Modules to expand the platform.")
 
 toolkit = st.columns(4)
