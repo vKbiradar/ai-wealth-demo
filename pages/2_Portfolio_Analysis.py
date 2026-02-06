@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from logic.portfolio import risk_alignment
+from logic.portfolios import get_allocation
 from ui.theme import section
 
 section(
@@ -16,9 +17,18 @@ profile = st.selectbox(
     ["Conservative", "Balanced", "Growth-Oriented"]
 )
 
-equity = st.slider("Equity (%)", 0, 100, 60)
-debt = st.slider("Debt (%)", 0, 100, 30)
-gold = st.slider("Gold (%)", 0, 100, 10)
+allocation_defaults = {"equity": 60, "debt": 30, "gold": 10}
+if st.session_state.get("customer_logged_in"):
+    allocation_defaults = get_allocation(
+        st.session_state.get("customer_username", "")
+    )
+
+equity = st.slider("Equity (%)", 0, 100, allocation_defaults["equity"])
+debt = st.slider("Debt (%)", 0, 100, allocation_defaults["debt"])
+gold = st.slider("Gold (%)", 0, 100, allocation_defaults["gold"])
+
+if st.session_state.get("customer_logged_in"):
+    st.caption("Showing the allocation saved by your advisor.")
 
 df = pd.DataFrame({
     "Asset": ["Equity", "Debt", "Gold"],
