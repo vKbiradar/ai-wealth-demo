@@ -28,6 +28,19 @@ else:
     if st.button("Go to login"):
         st.switch_page("pages/0_Login.py")
 
+if st.session_state.get("admin_logged_in"):
+    st.markdown(
+        """
+        <div class="card">
+            <h4>Admin session active</h4>
+            <p class="muted">Manage customer portfolio allocations.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    if st.button("Open Admin Console"):
+        st.switch_page("pages/6_Admin.py")
+
 st.markdown("<br/>", unsafe_allow_html=True)
 
 st.markdown("""

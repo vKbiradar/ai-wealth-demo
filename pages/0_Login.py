@@ -1,5 +1,6 @@
 import streamlit as st
 
+from logic.admin import authenticate_admin
 from logic.customers import authenticate_customer, register_customer
 from ui.theme import set_theme
 
@@ -17,7 +18,7 @@ st.markdown(
 
 st.markdown("<br/>", unsafe_allow_html=True)
 
-login_tab, register_tab = st.tabs(["Login", "Create Account"])
+login_tab, register_tab, admin_tab = st.tabs(["Login", "Create Account", "Admin"])
 
 with login_tab:
     st.markdown("#### Sign in")
@@ -57,3 +58,22 @@ with register_tab:
             st.error("That username is taken. Please choose another.")
         else:
             st.success("Account created! You can now log in with your credentials.")
+
+with admin_tab:
+    st.markdown("#### Admin access")
+    with st.form("admin_login"):
+        admin_username = st.text_input("Admin username")
+        admin_password = st.text_input("Admin password", type="password")
+        admin_submit = st.form_submit_button("Login as Admin")
+
+    if admin_submit:
+        if authenticate_admin(admin_username, admin_password):
+            st.session_state["admin_logged_in"] = True
+            st.success("Admin authenticated. You can now manage portfolios.")
+        else:
+            st.error("Admin credentials not recognized.")
+
+    if st.session_state.get("admin_logged_in"):
+        st.markdown("<br/>", unsafe_allow_html=True)
+        if st.button("Go to Admin Console"):
+            st.switch_page("pages/6_Admin.py")
