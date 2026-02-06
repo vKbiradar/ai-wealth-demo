@@ -5,6 +5,31 @@ from ui.theme import set_theme, section
 
 set_theme()
 
+if st.session_state.get("customer_logged_in"):
+    st.markdown(
+        f"""
+        <div class="card">
+            <h4>Welcome, {st.session_state.get('customer_username', 'Customer')}!</h4>
+            <p class="muted">You are signed in and ready to explore AI Wealth.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+else:
+    st.markdown(
+        """
+        <div class="card">
+            <h4>Customer access</h4>
+            <p class="muted">Log in to save your preferences and access personalized insights.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    if st.button("Go to login"):
+        st.switch_page("pages/0_Login.py")
+
+st.markdown("<br/>", unsafe_allow_html=True)
+
 st.markdown("""
 <div class="card">
 <h1>AI Wealth</h1>
