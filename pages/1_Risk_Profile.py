@@ -2,6 +2,12 @@ import streamlit as st
 from logic.risk import calculate_risk_score, risk_label
 from ui.theme import section
 
+if not st.session_state.get("customer_logged_in"):
+    st.warning("Customer access required. Please log in from the home page.")
+    if st.button("Go to Login"):
+        st.switch_page("app.py")
+    st.stop()
+
 section(
     "Risk Profiling",
     "Behavioural assessment before portfolio construction."
@@ -28,4 +34,3 @@ with st.container():
         st.markdown(f"**Investor Profile:** {label}")
 
     st.markdown("</div>", unsafe_allow_html=True)
-

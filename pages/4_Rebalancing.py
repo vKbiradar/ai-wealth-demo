@@ -2,6 +2,12 @@ import streamlit as st
 from logic.rebalance import rebalance_needed
 from ui.theme import section
 
+if not st.session_state.get("customer_logged_in"):
+    st.warning("Customer access required. Please log in from the home page.")
+    if st.button("Go to Login"):
+        st.switch_page("app.py")
+    st.stop()
+
 section(
     "Rebalancing Discipline",
     "Rules over emotions."
