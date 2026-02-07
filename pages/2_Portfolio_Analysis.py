@@ -5,6 +5,12 @@ from logic.portfolio import risk_alignment
 from logic.portfolios import get_allocation
 from ui.theme import section
 
+if not st.session_state.get("customer_logged_in"):
+    st.warning("Customer access required. Please log in from the home page.")
+    if st.button("Go to Login"):
+        st.switch_page("app.py")
+    st.stop()
+
 section(
     "Portfolio Assessment",
     "Visualize diversification and risk mismatch."
