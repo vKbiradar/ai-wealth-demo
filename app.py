@@ -119,6 +119,94 @@ Institutional-grade portfolio intelligence for disciplined investing.
 
 st.markdown("<br/>", unsafe_allow_html=True)
 
+cta_cols = st.columns([2, 1])
+with cta_cols[0]:
+    st.markdown(
+        """
+        <div class="card">
+            <span class="status-chip status-ok">Public beta</span>
+            <h3>A friendly way to build wealth, open to everyone</h3>
+            <p class="muted">
+                Join thousands of everyday investors exploring clearer, calmer decisions.
+                Answer a few quick questions and we will match you with a risk-aware
+                strategy tailored to your goals.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+with cta_cols[1]:
+    if st.button("Start building wealth"):
+        st.switch_page("pages/1_Risk_Profile.py")
+
+st.markdown("<br/>", unsafe_allow_html=True)
+
+section("Why people like AI Wealth", "Transparent, friendly, and built for real life.")
+
+earn_cols = st.columns(3)
+earn_steps = [
+    ("Plain-language guidance", "Know the why behind each recommendation."),
+    ("No pressure, no trades", "We keep you informed without pushing products."),
+    ("Community-ready dashboards", "Share insights with your advisor or peers.")
+]
+
+for col, (title, desc) in zip(earn_cols, earn_steps):
+    with col:
+        st.markdown(
+            f"""
+            <div class="card">
+                <h4>{title}</h4>
+                <p class="muted">{desc}</p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+st.caption("AI Wealth provides decision support and does not execute trades.")
+
+st.markdown("<br/>", unsafe_allow_html=True)
+
+section("Earn from AI Wealth", "Simple paths to monetization without trading.")
+
+earn_paths = st.columns(3)
+earn_options = [
+    ("Premium plans", "Charge for advanced forecasting, alerts, and reports."),
+    ("Advisor partnerships", "Offer white-labeled dashboards for financial advisors."),
+    ("Education bundles", "Sell guided lessons and templates for new investors.")
+]
+
+for col, (title, desc) in zip(earn_paths, earn_options):
+    with col:
+        st.markdown(
+            f"""
+            <div class="card">
+                <h4>{title}</h4>
+                <p class="muted">{desc}</p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+st.markdown(
+    """
+    <div class="card" style="margin-top: 1rem;">
+        <h4>Launch a paid tier</h4>
+        <p class="muted">
+            Start with a free experience, then introduce a paid plan for premium signals,
+            monthly portfolio reviews, and exportable reports.
+        </p>
+        <ul>
+            <li>Free: core risk profiling + portfolio visuals</li>
+            <li>Pro: alerts, forecast lab depth, and rebalancing reminders</li>
+            <li>Advisor: team seats, client reporting, and white-label exports</li>
+        </ul>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+st.markdown("<br/>", unsafe_allow_html=True)
+
 section("Our Process", "Built for long-term investors, not traders.")
 
 cols = st.columns(4)
