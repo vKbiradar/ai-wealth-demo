@@ -269,6 +269,29 @@ for col, (label, link) in zip(feed_cols, feed_links):
 
 st.markdown("<br/>", unsafe_allow_html=True)
 
+
+section("Intelligence Engine", "Portfolio intelligence on top of your existing workflow.")
+
+intel_cols = st.columns([2, 1])
+with intel_cols[0]:
+    st.markdown(
+        """
+        <div class="card">
+            <h4>Decision-Support Intelligence Layer</h4>
+            <p class="muted">
+                Run AI-assisted portfolio diagnostics, optimization suggestions,
+                and risk-engine signals in one place.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+with intel_cols[1]:
+    if st.button("Open Intelligence Layer"):
+        st.switch_page("pages/7_Intelligence_Layer.py")
+
+st.markdown("<br/>", unsafe_allow_html=True)
+
 section("Forecast Lab", "Launch the data-science driven return outlook.")
 
 forecast_cols = st.columns([2, 1])
